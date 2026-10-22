@@ -24,7 +24,9 @@ import {
   Award,
 } from 'lucide-react';
 import { PortfolioData } from '../types/portfolio';
-import { getAssetPath } from '../utils/assetPath';
+import resumePage1Hd from '../assets/resume_page_1_hd.png';
+import resumePage2Hd from '../assets/resume_page_2_hd.png';
+import resumePdfFile from '../assets/resume.pdf';
 
 interface PdfResumeSectionProps {
   portfolio: PortfolioData;
@@ -41,13 +43,12 @@ export const PdfResumeSection: React.FC<PdfResumeSectionProps> = ({
   const [rotation, setRotation] = useState<number>(0);
   const [copied, setCopied] = useState<boolean>(false);
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
+  const [imgErrorPage1, setImgErrorPage1] = useState<boolean>(false);
+  const [imgErrorPage2, setImgErrorPage2] = useState<boolean>(false);
 
-  const pdfUrl = getAssetPath(
-    portfolio.resumePdfPath ||
-      'assets/aistudio/Blue_and_White_Clean_Professional_A4_Resume_92029312.pdf'
-  );
-  const page1HdUrl = getAssetPath('assets/resume_page_1_hd.png');
-  const page2HdUrl = getAssetPath('assets/resume_page_2_hd.png');
+  const pdfUrl = resumePdfFile;
+  const page1HdUrl = resumePage1Hd;
+  const page2HdUrl = resumePage2Hd;
 
   const plainTextResume = `TANYA MALL — DATA ANALYST & TEAM LEADER
 Phone: ${portfolio.phone || '+91 9305024371'} | Location: ${portfolio.city}

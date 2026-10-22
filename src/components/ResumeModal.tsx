@@ -22,7 +22,9 @@ import {
   FileCheck,
 } from 'lucide-react';
 import { PortfolioData } from '../types/portfolio';
-import { getAssetPath } from '../utils/assetPath';
+import resumePage1Hd from '../assets/resume_page_1_hd.png';
+import resumePage2Hd from '../assets/resume_page_2_hd.png';
+import resumePdfFile from '../assets/resume.pdf';
 
 interface ResumeModalProps {
   isOpen: boolean;
@@ -45,10 +47,7 @@ export const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose, portf
 
   if (!isOpen) return null;
 
-  const pdfUrl = getAssetPath(
-    portfolio.resumePdfPath ||
-      'assets/aistudio/Blue_and_White_Clean_Professional_A4_Resume_92029312.pdf'
-  );
+  const pdfUrl = resumePdfFile;
 
   const plainTextResume = `TANYA MALL — DATA ANALYST & TEAM LEADER
 Phone: ${portfolio.phone || '+91 9305024371'} | Location: ${portfolio.city}
@@ -453,7 +452,7 @@ EDUCATION
                       PAGE 1 OF 2
                     </div>
                     <img
-                      src={getAssetPath('assets/resume_page_1_hd.png')}
+                      src={resumePage1Hd}
                       alt="Tanya Mall Data Analyst Résumé - Page 1"
                       className="w-full h-auto block"
                       loading="eager"
@@ -468,7 +467,7 @@ EDUCATION
                       PAGE 2 OF 2
                     </div>
                     <img
-                      src={getAssetPath('assets/resume_page_2_hd.png')}
+                      src={resumePage2Hd}
                       alt="Tanya Mall Data Analyst Résumé - Page 2"
                       className="w-full h-auto block"
                       loading="eager"
