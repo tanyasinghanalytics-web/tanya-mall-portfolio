@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* ---------- DARK THEME (DEFAULT) ---------- */
+:root,
+:root[data-theme="dark"] {
+  --bg: #0E1116;
+  --bg-2: #0A0D12;
+  --panel: #12161D;
+  --panel-2: #171C24;
+  --line: #262D37;
+  --line-2: #333C48;
+  --grid: rgba(255, 255, 255, .035);
+  --text: #E8E6E1;
+  --text-2: #B5BDC7;
+  --muted: #9AA3AE;
+  --faint: #6B7684;
+  --signal: #F2A93B;        /* amber fill: insight / highlight */
+  --signal-ink: #F2A93B;    /* amber used as text */
+  --on-signal: #14110B;     /* text on amber */
+  --signal-soft: rgba(242, 169, 59, .14);
+  --data: #5AB0F0;          /* blue fill: data */
+  --data-ink: #5AB0F0;
+  --data-soft: rgba(90, 176, 240, .14);
+  --data-dim: #3B6E95;
+  --noise: #5C6773;
+  --ok: #7BD88F;
+  --shadow: 0 24px 60px -30px rgba(0, 0, 0, .8);
+  color-scheme: dark;
+}
+
+/* ---------- LIGHT THEME ---------- */
+:root[data-theme="light"] {
+  --bg: #F6F4EF;
+  --bg-2: #EDEAE3;
+  --panel: #FFFFFF;
+  --panel-2: #FBFAF6;
+  --line: #E2DED5;
+  --line-2: #CBC6BA;
+  --grid: rgba(20, 30, 50, .045);
+  --text: #16191E;
+  --text-2: #3E4652;
+  --muted: #59616C;
+  --faint: #8A919B;
+  --signal: #EE9A2C;
+  --signal-ink: #9A5A00;
+  --on-signal: #1A1206;
+  --signal-soft: rgba(238, 154, 44, .14);
+  --data: #2F7FC1;
+  --data-ink: #1E66A3;
+  --data-soft: rgba(47, 127, 193, .12);
+  --data-dim: #A9CBE8;
+  --noise: #A7ADB5;
+  --ok: #23854A;
+  --shadow: 0 24px 60px -34px rgba(40, 40, 30, .35);
+  color-scheme: light;
+}
+
+:root {
+  --display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius: 18px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--display);
+  overflow-x: hidden;
+  transition: background-color .35s ease, color .35s ease;
+}
+
+.mono { font-family: var(--mono); }
+.display { font-family: var(--display); }
+
+/* Graph paper analyst pattern */
+.graph-bg {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--on-signal);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 60%, transparent); }
+  100% { box-shadow: 0 0 0 16px transparent; }
+}
+
+.pulse-node {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--signal);
+}
