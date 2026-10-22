@@ -67,7 +67,7 @@ VALUES ('${escSql(who.trim() || 'you')}', '${escSql(email.trim() || 'you@company
   );
 
   return (
-    <section className="py-14 sm:py-20" id="contact">
+    <section className="py-14 sm:py-20 scroll-mt-20" id="contact">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-8">
         {/* Section Header */}
         <div className="flex flex-col gap-4 mb-10">

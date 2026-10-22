@@ -4,6 +4,7 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { AboutSection } from './components/AboutSection';
 import { SkillsSection } from './components/SkillsSection';
+import { PdfResumeSection } from './components/PdfResumeSection';
 import { ProjectsSection } from './components/ProjectsSection';
 import { ImpactSection } from './components/ImpactSection';
 import { ContactSection } from './components/ContactSection';
@@ -116,6 +117,10 @@ export default function App() {
           onOpenResume={() => setIsResumeOpen(true)}
         />
         <SkillsSection portfolio={portfolio} />
+        <PdfResumeSection
+          portfolio={portfolio}
+          onOpenResumeModal={() => setIsResumeOpen(true)}
+        />
         <ProjectsSection portfolio={portfolio} />
         <ImpactSection portfolio={portfolio} />
         <ContactSection

@@ -16,7 +16,7 @@ export const ImpactSection: React.FC<ImpactSectionProps> = ({ portfolio }) => {
   const quotes = portfolio.quotes;
 
   return (
-    <section className="py-14 sm:py-20 border-b border-[var(--line)]" id="impact">
+    <section className="py-14 sm:py-20 border-b border-[var(--line)] scroll-mt-20" id="impact">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">

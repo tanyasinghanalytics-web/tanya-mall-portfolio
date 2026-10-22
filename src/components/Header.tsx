@@ -15,9 +15,10 @@ const SECTIONS = [
   { id: 'home', num: '00', label: 'Home', sub: 'start here' },
   { id: 'about', num: '01', label: 'About', sub: 'who I am' },
   { id: 'skills', num: '02', label: 'Skills', sub: 'my pipeline' },
-  { id: 'projects', num: '03', label: 'Projects', sub: 'case files' },
-  { id: 'impact', num: '04', label: 'Impact', sub: 'results & proof' },
-  { id: 'contact', num: '05', label: 'Contact', sub: "let's talk" },
+  { id: 'resume-section', num: '03', label: 'PDF Resume', sub: 'official document' },
+  { id: 'projects', num: '04', label: 'Projects', sub: 'case files' },
+  { id: 'impact', num: '05', label: 'Impact', sub: 'results & proof' },
+  { id: 'contact', num: '06', label: 'Contact', sub: "let's talk" },
 ];
 
 export const Header: React.FC<HeaderProps> = ({
@@ -74,7 +75,7 @@ export const Header: React.FC<HeaderProps> = ({
         aria-hidden="true"
       />
 
-      <header className="sticky top-0 z-40 bg-[color-mix(in_srgb,var(--bg)_88%,transparent)] backdrop-blur-md border-b border-[var(--line)] transition-colors">
+      <header className="sticky top-0 z-50 bg-[color-mix(in_srgb,var(--bg)_92%,transparent)] backdrop-blur-md border-b border-[var(--line)] transition-colors shadow-sm">
         <div className="max-w-[1240px] mx-auto px-4 sm:px-8 py-3.5 flex items-center justify-between gap-3 sm:gap-4">
           {/* Logo */}
           <a
@@ -98,14 +99,14 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </a>
 
-          {/* "You are here" chip for tablets & mobile */}
+          {/* "You are here" chip for tablets */}
           <div className="hidden md:flex xl:hidden items-center justify-center gap-2 h-9 px-3 rounded-full border border-dashed border-[var(--line-2)] mono text-xs text-[var(--muted)] max-w-[210px] overflow-hidden whitespace-nowrap bg-[var(--panel)]">
-            <span className="text-[var(--signal-ink)] font-bold">{currentSecObj.num}/05</span>
+            <span className="text-[var(--signal-ink)] font-bold">{currentSecObj.num}/06</span>
             <span className="w-1 h-1 rounded-full bg-[var(--faint)]" />
             <span className="text-[var(--text)] font-medium truncate">{currentSecObj.label}</span>
           </div>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation Header */}
           <nav
             className="hidden lg:flex items-center gap-1 mono text-[13px]"
             aria-label="Sections"
@@ -118,7 +119,7 @@ export const Header: React.FC<HeaderProps> = ({
                   onClick={() => handleNavClick(sec.id)}
                   className={`px-3 py-2 rounded-xl transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 ${
                     isActive
-                      ? 'text-[var(--signal-ink)] bg-[var(--signal-soft)] font-medium border border-[var(--signal)]/30'
+                      ? 'text-[var(--signal-ink)] bg-[var(--signal-soft)] font-semibold border border-[var(--signal)]/30 shadow-xs'
                       : 'text-[var(--muted)] hover:text-[var(--text)] hover:bg-[var(--panel-2)]'
                   }`}
                   aria-current={isActive ? 'page' : undefined}
@@ -197,6 +198,27 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
 
+        {/* Mobile Horizontal Sub-Navigation Strip (Always docked below header) */}
+        <div className="lg:hidden border-t border-[var(--line)] bg-[var(--panel)]/95 backdrop-blur-sm overflow-x-auto py-2 px-4 flex items-center gap-1.5 scroll-smooth">
+          {SECTIONS.map((sec) => {
+            const isActive = activeSection === sec.id;
+            return (
+              <button
+                key={sec.id}
+                onClick={() => handleNavClick(sec.id)}
+                className={`px-3 py-1.5 rounded-lg mono text-xs shrink-0 flex items-center gap-1 transition-all cursor-pointer ${
+                  isActive
+                    ? 'bg-[var(--signal)] text-[var(--on-signal)] font-bold shadow-xs'
+                    : 'bg-[var(--bg-2)] border border-[var(--line)] text-[var(--muted)] hover:text-[var(--text)]'
+                }`}
+              >
+                <span className="opacity-70 text-[10px]">{sec.num}</span>
+                <span>{sec.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="lg:hidden px-4 sm:px-8 pb-5 pt-2 border-t border-[var(--line)] bg-[var(--panel)] animate-fadeIn">
@@ -209,7 +231,7 @@ export const Header: React.FC<HeaderProps> = ({
                     onClick={() => handleNavClick(sec.id)}
                     className={`p-3 rounded-xl border text-left flex flex-col gap-1 transition-all cursor-pointer ${
                       isActive
-                        ? 'border-[var(--signal)] bg-[var(--signal-soft)] text-[var(--signal-ink)]'
+                        ? 'border-[var(--signal)] bg-[var(--signal-soft)] text-[var(--signal-ink)] font-bold'
                         : 'border-[var(--line)] bg-[var(--bg-2)] text-[var(--text)] hover:border-[var(--signal)]/50'
                     }`}
                   >

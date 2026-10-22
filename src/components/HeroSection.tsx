@@ -108,7 +108,7 @@ HAVING   impact > 0;           -- only done when behavior changes`;
   };
 
   return (
-    <section className="border-b border-[var(--line)] pb-12 pt-6 sm:pt-10" id="home">
+    <section className="border-b border-[var(--line)] pb-12 pt-6 sm:pt-10 scroll-mt-20" id="home">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-8">
         {/* HERO SECTION */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center pt-4 pb-12">

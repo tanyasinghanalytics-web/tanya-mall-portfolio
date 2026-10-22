@@ -28,7 +28,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ portfolio, onOpenRes
   const journeySvgPoints = milestones.map((m) => `${m.x},${m.y}`).join(' ');
 
   return (
-    <section className="py-14 sm:py-20 border-b border-[var(--line)]" id="about">
+    <section className="py-14 sm:py-20 border-b border-[var(--line)] scroll-mt-20" id="about">
       <div className="max-w-[1240px] mx-auto px-4 sm:px-8">
         {/* Section Header */}
         <div className="flex flex-col gap-4 mb-10">
